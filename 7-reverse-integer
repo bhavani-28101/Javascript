@@ -1,0 +1,25 @@
+/**
+ * @param {number} x
+ * @return {number}
+ */
+var reverse = function(x) {
+    let sign;
+    if(x<0){
+        sign=-1;
+    }
+    else{
+        sign=1;
+    }
+    let r;
+    let rev=0;
+    x=Math.abs(x);
+    while(x>0){
+        r=x%10;
+        rev=rev*10+r;
+        if(rev < -2147483648 || rev > 2147483647){
+            return 0;
+        }
+        x=Math.floor(x/10);
+    }
+    return rev*sign;
+};
