@@ -1,0 +1,22 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+    if(s===""){
+        return 0;
+    }
+    let window =new Set();
+    let l=0;
+    let res=Number.MIN_SAFE_INTEGER;
+    for(let r=0;r<s.length;r++){
+        while(window.has(s[r])){
+            window.delete(s[l]);
+            l+=1;
+        }
+        window.add(s[r]);
+        res=Math.max(res,(s.slice(l,r+1).length));
+    }
+    return res;
+    
+};
