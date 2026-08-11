@@ -1,0 +1,24 @@
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var maxArea = function(nums) {
+    let i=0;
+    let j=nums.length-1;
+        let minele=0;
+        let res=0;
+        while(i<j){
+            if(nums[i]>=nums[j]){
+                minele=nums[j];
+                height=j-i;
+                j-=1;
+            }
+            else{
+                minele=nums[i];
+                height=j-i;
+                i+=1;
+            }
+            res=Math.max(res,(minele*height));
+        }
+        return res;
+};
