@@ -1,0 +1,18 @@
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+var strStr = function(haystack, needle) {
+    let l=0;
+    let res=[];
+    for(let r=needle.length-1;r<haystack.length;r++){
+        if(haystack.slice(l,r+1)===(needle)){
+            res.push(l);
+            }
+        else{
+            l+=1;
+            }
+        }
+    return res.length!=0 ? res[0] : -1;
+};
