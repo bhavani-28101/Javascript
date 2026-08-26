@@ -1,0 +1,20 @@
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var inorderTraversal = function(root) {
+    const stack = [];
+
+    function dfs(root) {
+        if (root === null) {
+            return;
+        }
+
+        dfs(root.left);
+        stack.push(root.val);
+        dfs(root.right);
+    }
+
+    dfs(root);
+    return stack;
+};
