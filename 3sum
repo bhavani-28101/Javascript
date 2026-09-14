@@ -1,0 +1,46 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function(nums) {
+    const mainres = [];
+
+    nums.sort((a, b) => a - b);
+
+    for (let fixed = 0; fixed < nums.length - 2; fixed++) {
+        // Skip duplicate fixed values
+        if (fixed > 0 && nums[fixed] === nums[fixed - 1]) {
+            continue;
+        }
+
+        let l = fixed + 1;
+        let r = nums.length - 1;
+
+        while (l < r) {
+            const sum = nums[fixed] + nums[l] + nums[r];
+
+            if (sum > 0) {
+                r--;
+            } else if (sum < 0) {
+                l++;
+            } else {
+                mainres.push([nums[fixed], nums[l], nums[r]]);
+
+                // Skip duplicate left values
+                while (l < r && nums[l] === nums[l + 1]) {
+                    l++;
+                }
+
+                // Skip duplicate right values
+                while (l < r && nums[r] === nums[r - 1]) {
+                    r--;
+                }
+
+                l++;
+                r--;
+            }
+        }
+    }
+
+    return mainres;
+};
