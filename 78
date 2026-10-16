@@ -1,0 +1,19 @@
+var subsets = function(nums) {
+    let res = [];
+    let curr = [];
+
+    function backtrack(index) {
+        res.push([...curr]);
+
+        for (let i = index; i < nums.length; i++) {
+            curr.push(nums[i]);
+
+            backtrack(i + 1);
+
+            curr.pop();
+        }
+    }
+
+    backtrack(0);
+    return res;
+};
